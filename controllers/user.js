@@ -65,7 +65,7 @@ module.exports.editUserData = (req, res, next) => {
         next(new BadRequestError(err.message));
       } else if (err instanceof mongoose.Error.DocumentNotFoundError) {
         next(new NotFoundError('Пользователь по указанному id не найден'));
-      } else if(err.code === 11000) {
+      } else if (err.code === 11000) {
         next(new ConflictError('Пользователь с таким email уже существует'));
       } else {
         next(err);
